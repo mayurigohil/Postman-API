@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "bede654d-6ff0-4849-9205-695cbf226a8e",
+		"name": "Billing order",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Billing order",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"addressLine1\": \"AL1\",\r\n  \"addressLine2\": \"AL2\",\r\n  \"city\": \"auckland\",\r\n  \"comment\": \"Good to go\",\r\n  \"email\": \"string@gmail.com\",\r\n  \"firstName\": \"Ashish\",\r\n  \"itemNumber\": \"12232\",\r\n  \"lastName\": \"Gohil\",\r\n  \"phone\": \"1234567894\",\r\n  \"state\": \"AL\",\r\n  \"zipCode\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{url}}:{{port}}/BillingOrder/{{id}}",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"BillingOrder",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"addressline1\", \"ALrdfsgsdg1\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.addressLine1).to.eql(pm.environment.get(\"addressLine1\"));\r",
+							"    pm.environment.set(\"id\", jasonData.id);;\r",
+							"    \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true,
+					"accept-encoding": true,
+					"connection": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"addressLine1\": \"{{addressline1}}\",\r\n  \"addressLine2\": \"AL2\",\r\n  \"city\": \"auckland\",\r\n  \"comment\": \"Good to go\",\r\n  \"email\": \"string@gmail.com\",\r\n  \"firstName\": \"Ashish1w1\",\r\n  \"itemNumber\": \"12232\",\r\n  \"lastName\": \"Gohilew\",\r\n  \"phone\": \"1234567894\",\r\n  \"state\": \"AL\",\r\n  \"zipCode\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{url}}:{{port}}/BillingOrder/",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"BillingOrder",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"addressline1\", \"test address\");\r",
+							"pm.environment.set(\"addressline2\", \"address2\");\r",
+							"pm.environment.set(\"fname\", \"gname\");\r",
+							"pm.environment.set(\"lname\", \"ttripathi\");\r",
+							"pm.environment.set(\"phone\", \"09995954999\");\r",
+							"pm.environment.set(\"email\", \"test@abc.vovm\");\r",
+							"pm.environment.set(\"city\", \"auckland\");\r",
+							"pm.environment.set(\"state\", \"AL\");\r",
+							"pm.environment.set(\"comment\", \"test comment\");\r",
+							"pm.environment.set(\"zipcode\", \"12457878\");\r",
+							"pm.environment.set(\"itemNumber\", \"232332233\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var al = pm.environment.get(\"addressline1\")\r",
+							"    pm.expect(jsonData.addressline1).to.eql(al)\r",
+							"    //console.log(jasonData.id)   \r",
+							"   pm.environment.set(\"id\", jsonData.id);;\r",
+							"    \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"addressLine1\": \"{{addressline1}}\",\r\n  \"addressLine2\": \"{{addressline2}}\",\r\n  \"city\": \"{{city}}\",\r\n  \"comment\": \"{{comment}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"firstName\": \"{{fname}}\",\r\n  \"itemNumber\": \"{{itemNumber}}\",\r\n  \"lastName\": \"{{lname}}\",\r\n  \"phone\": \"{{phone}}\",\r\n  \"state\": \"{{state}}\",\r\n  \"zipCode\": \"{{zipcode}}\"\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{url}}:{{port}}/BillingOrder/{{id}}",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"BillingOrder",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{url}}:{{port}}/BillingOrder/{{id}}",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"BillingOrder",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
